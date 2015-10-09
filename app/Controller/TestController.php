@@ -16,6 +16,11 @@ class TestController extends AppController {
 				'result' => [ ] 
 		);
 		
+		//get请求的参数数组
+		$query = $this->request->query;
+		//post请求的参数数组
+		$data = $this->request->data;
+		
 		//关联model
 		$classes_model = $this->loadAppModel("TestModel");
 

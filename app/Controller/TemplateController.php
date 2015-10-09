@@ -11,6 +11,12 @@ class TemplateController extends AppController {
 	}
 	
 	public function crudApi() {
+		//这里没有用到
+		//get请求的参数数组
+		$query = $this->request->query;
+		//post请求的参数数组
+		$data = $this->request->data;
+		
 		//强行指定为post请求，允许get时可以去掉此条件
 		if($this->isPost()) {
 			fwrite(fopen( "F:\\tmp\\log.txt" , "a" ), "[" .date('Y-m-d H:i:s',time()+60*60*6). "]". "is Post" . "\n" );
@@ -36,11 +42,8 @@ class TemplateController extends AppController {
 // 				$this->Validation->validate($this->request->data, $check);
 		
 				//关联model
-// 				$classes_model = $this->loadAppModel("[TemplateModel]");
 				$classes_model = $this->loadAppModel("TemplateModel");
 				
-
-
 				$s_id=5;
 				
 				$options = array ();
@@ -59,26 +62,26 @@ class TemplateController extends AppController {
 					}
 				}
 
-				fwrite(fopen( "F:\\tmp\\log.txt" , "a" ), "[" .date('Y-m-d H:i:s',time()+60*60*6). "]". "crudApi success" . "\n" );
+// 				fwrite(fopen( "F:\\tmp\\log.txt" , "a" ), "[" .date('Y-m-d H:i:s',time()+60*60*6). "]". "crudApi success" . "\n" );
 				
 				$ret["result"] = "success";
 				$this->response->body(json_encode($ret));
 				return;
 			} catch(ValidationException $vex) {
-				fwrite(fopen( "F:\\tmp\\log.txt" , "a" ), "[" .date('Y-m-d H:i:s',time()+60*60*6). "]". "crudApi ValidationException" . "\n" );
+// 				fwrite(fopen( "F:\\tmp\\log.txt" , "a" ), "[" .date('Y-m-d H:i:s',time()+60*60*6). "]". "crudApi ValidationException" . "\n" );
 				$ret["code"] = $this->ERR_PARAM_NOT_EXISTS;
 				$ret["result"] = "error";
 				$this->response->body(json_encode($ret));
 				return;
 			} catch(Exception $ex) {
-				fwrite(fopen( "F:\\tmp\\log.txt" , "a" ), "[" .date('Y-m-d H:i:s',time()+60*60*6). "]". "crudApi Exception" . "\n" );
+// 				fwrite(fopen( "F:\\tmp\\log.txt" , "a" ), "[" .date('Y-m-d H:i:s',time()+60*60*6). "]". "crudApi Exception" . "\n" );
 				$ret["code"] = $this->ERR_OTHER;
 				$ret["result"] = "error";
 				$this->response->body(json_encode($ret));
 				return;
 			}
 		} else {
-			fwrite(fopen( "F:\\tmp\\log.txt" , "a" ), "[" .date('Y-m-d H:i:s',time()+60*60*6). "]". "not Post" . "\n" );
+// 			fwrite(fopen( "F:\\tmp\\log.txt" , "a" ), "[" .date('Y-m-d H:i:s',time()+60*60*6). "]". "not Post" . "\n" );
 			$this->response->statusCode(405);
 		}
 	}
