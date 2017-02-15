@@ -19,7 +19,7 @@ class TemplateController extends AppController {
 		
 		//强行指定为post请求，允许get时可以去掉此条件
 		if($this->isPost()) {
-			fwrite(fopen( "F:\\tmp\\log.txt" , "a" ), "[" .date('Y-m-d H:i:s',time()+60*60*6). "]". "is Post" . "\n" );
+			// fwrite(fopen( "F:\\tmp\\log.txt" , "a" ), "[" .date('Y-m-d H:i:s',time()+60*60*6). "]". "is Post" . "\n" );
 			//定义返回值数据
 			$ret = array (
 					'result' => [ ] 

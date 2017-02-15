@@ -7,6 +7,8 @@ class TestController extends AppController {
 	}
 	
 	public function index() {
+		//请求例子：http://qxu1590160017.my3w.com/cms_t_01/test
+		//请求例子：http://[域名]/[cms主目录]/[api名]
 		$this->response->body("Hello,cakephp.<br>This is in test api index().<br>");
 	}
 	
@@ -45,7 +47,7 @@ class TestController extends AppController {
 		
 		//查询结果数据自动对应数据库中的列名
 		$id = $result["id"];
-		$name = $result["name"];
+		$name = $result["name_cn"];
 
 		$this->response->body("Hello,cakephp.<br>This is in test api getClasses().<br>search result: id = ".$id." name = ".$name);
 	}
